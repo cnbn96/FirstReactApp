@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import fetchChampion from './fetchChampion';
+import youtubeSearch from './youtubeSearch';
 
 class Stat extends React.Component{
   render(){
@@ -17,18 +18,36 @@ class Stat extends React.Component{
     );
   }
 }
-
+class SpotLight extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      youtubeCode: ''
+    };
+  }
+  componentWillMount(){
+    console.log('SpotLight DidMount!');
+    youtubeSearch(this.props.champName, youtube => 
+      this.setState({youtubeCode: youtube})
+    );
+  }
+  render(){
+    return(
+      <iframe id="ChampionSpotlightVideo" width="450" height="253" src={'https://www.youtube.com/embed/0gvBGmwhOLU?wmode=transparent'} frameBorder="0" allowFullScreen=""></iframe>
+    );
+  }
+}
 class Champion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      champion:{} 
+      champion: []
     };
   }
-  componentDidMount(){
-    console.log("DidMount Running");
+  componentWillMount(){
+    console.log("Champion DidMount Running!");
     fetchChampion(this.props.id, champion => 
-      this.setState({champion})
+      this.setState({champion: champion})
     );
   }
   render() {
@@ -56,37 +75,17 @@ class Champion extends React.Component {
                     <div className="row">
                       <div className="col-xs-12 col-md-6">
                         <div className="champ-stat-box">
-                          {
-                            this.state.champion.stats.map(obj => 
-                              obj.hp
-                            )
-                          }
-                          <Stat statName={'Health'} statValue={80} statPerLevel={85} statClass={'stat-hp'}/>
-                          <Stat statName={'Attack Damage'} statValue={80} statPerLevel={85} statClass={'stat-ad'}/>
-                          <p>
-                            <span className="stat-label stat-as">Attack Speed:</span><span className="stat-value"><span className="dd-auto-set" data-property="stats.attackspeed"></span>&nbsp;(+
-                            <span
-                             className="dd-auto-set" data-property="stats.attackspeedperlevel">2.5</span>%&nbsp;per level)</span>
-                          </p>
-                          <p>
-                            <span className="stat-label stat-ms">Movement Speed:</span><span className="stat-value">&nbsp;<span className="dd-auto-set" data-property="stats.movespeed"></span></span>
-                          </p>
+                          <Stat statName={'Health'} statValue={this.state.champion.stats && this.state.champion.stats['hp']} statPerLevel={this.state.champion.stats && this.state.champion.stats['hpregenperlevel']} statClass={'stat-hp'}/>
+                          <Stat statName={'Attack Damage'} statValue={this.state.champion.stats && this.state.champion.stats['attackdamage']} statPerLevel={this.state.champion.stats && this.state.champion.stats['attackdamageperlevel']} statClass={'stat-ad'}/>
+                          <Stat statName={'Attack Speed'} statValue={this.state.champion.stats && this.state.champion.stats['attackspeedoffset']} statPerLevel={this.state.champion.stats && this.state.champion.stats['attackspeedperlevel']} statClass={'stat-as'}/>
+                          <Stat statName={'Movement Speed'} statValue={this.state.champion.stats && this.state.champion.stats['movespeed']} statClass={'stat-ms'}/>
                         </div>
                       </div>
                       <div className="col-xs-12 col-md-6">
                         <div className="champstat-box">
-                          <p><span className="stat-label stat-hp-regen">Health Regen:</span><span className="stat-value"><span className="dd-auto-set" data-property="stats.hpregen">8.5</span>&nbsp;(+
-                          <span
-                           className="dd-auto-set" data-property="stats.hpregenperlevel">0.85</span>&nbsp;per level)</span>
-                          </p>
-                          <p><span className="stat-label stat-armor">Armor:</span><span className="stat-value"><span className="dd-auto-set" data-property="stats.armor">34</span>&nbsp;(+
-                            <span
-                             className="dd-auto-set" data-property="stats.armorperlevel">3</span>&nbsp;per level)</span>
-                          </p>
-                          <p><span className="stat-label stat-mr">Magic Resist:</span><span className="stat-value"><span className="dd-auto-set" data-property="stats.spellblock">32</span>&nbsp;(+
-                            <span
-                             className="dd-auto-set" data-property="stats.spellblockperlevel">1.25</span>&nbsp;per level)</span>
-                          </p>
+                          <Stat statName={'Health Regen'} statValue={this.state.champion.stats && this.state.champion.stats['hpregen']} statPerLevel={this.state.champion.stats && this.state.champion.stats['hpregenperlevel']} statClass={'stat-hp-regen'}/>
+                          <Stat statName={'Armor'} statValue={this.state.champion.stats && this.state.champion.stats['armor']} statPerLevel={this.state.champion.stats && this.state.champion.stats['armorperlevel']} statClass={'stat-armor'}/>
+                          <Stat statName={'Magic Resist'} statValue={this.state.champion.stats && this.state.champion.stats['spellblock']} statPerLevel={this.state.champion.stats && this.state.champion.stats['spellblockperlevel']} statClass={'stat-mr'}/>
                         </div>
                       </div>
                     </div>
@@ -95,8 +94,7 @@ class Champion extends React.Component {
               </div>
               <div className="col-xs-12 col-md-6 champ-ability">
                 <div id="ChampionSpotlightContainer" className="content-border">
-                  <iframe id="ChampionSpotlightVideo" width="450" height="253" src="https://www.youtube.com/embed/MFcsOX9xcIo?wmode=transparent"
-                  frameBorder="0" allowFullScreen=""></iframe>
+                  <SpotLight champName={this.state.champion.name} />
                 </div>
                 <h3 style={{marginBottom : "10px"}}>Abilities</h3>
                 <div id="ability-summary" className="gs-container no-vertical-gutter">
@@ -114,8 +112,8 @@ class Champion extends React.Component {
                   </div>
                   <div className="default-1-5">
                     <span className="content-border"><a href="#SpellR">
-                           <img className="dd-set-image-ability-R" src="https://ddragon.leagueoflegends.com/cdn/8.11.1/img/spell/IreliaR.png"/></a></span>
-                    </div>
+                       <img className="dd-set-image-ability-R" src="https://ddragon.leagueoflegends.com/cdn/8.11.1/img/spell/IreliaR.png"/></a></span>
+                  </div>
                 </div>
                 <a id="UniverseLink" href="https://universe.leagueoflegends.com/en_US/champion/irelia" className="btn-large btn-large-primary" style={{"width":"100%"}}>Learn about Irelia on Universe</a> 
               </div>
@@ -133,7 +131,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Champion id={266} />
+        <Champion id={75} />
       </div>
     );
   }
