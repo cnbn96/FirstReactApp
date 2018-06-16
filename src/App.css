@@ -1,0 +1,193 @@
+html body {
+    font-size: 1.5em;
+    font-family: "Gill Sans W04",GillSans,"Gill Sans","Gill Sans MT",Calibri,"Trebuchet MS",sans-serif;
+    line-height: 1.4em;
+    color: #000;
+}
+a,a:hover,a:active{
+  text-decoration: none;
+}
+h1, h2, h3, h4 {
+    font-weight: normal;
+    font-family: "Adobe Garamond Pro",Garamond,Baskerville,"Baskerville Old Face","Hoefler Text","Times New Roman",serif;
+    line-height: 1em;
+    color: #2b2b2b;
+}
+h3 {
+    font-size: 1.73333em;
+    margin: 10px 0 0 0;
+    line-height: 1em;
+}
+#ChampionBackdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#champion-section {
+    padding: 20px 0 50px 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    background-image: url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/frame-center.png);
+    background-repeat: repeat-y;
+    background-position: 50% 0;
+}
+#champ-row{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#champ-row > .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#champion-section:before{
+  content: "";
+  width: 100%;
+  height: 136px;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  background: transparent url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/frame-sprite.png) no-repeat 50% -148px;
+}
+#champion-section:after{
+    content: '';
+    width: 100%;
+    position: absolute;
+    background: transparent url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/frame-sprite.png) no-repeat 50% -352px;
+    bottom: -10px;
+    left: 0;
+    height: 62px;
+}
+.content-border {
+    box-sizing: border-box;
+    padding: 4px;
+    margin-top: 20px;
+    background-color: transparent;
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#1A000000,endColorstr=#1A000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#1A000000,endColorstr=#1A000000);
+    background-color: rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(84,84,84,0.3);
+    border-top: 1px solid rgba(84,84,84,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    border-right: 1px solid rgba(255,255,255,0.6);
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+}
+.content-border>* {
+    -webkit-box-shadow: 0 0 2px 0 #868686;
+    -moz-box-shadow: 0 0 2px 0 #868686;
+    box-shadow: 0 0 2px 0 #868686;
+    background-color: #dedede;
+}
+.champ-info > .content-border {
+    width: 100%;
+}
+.champ-name {
+    margin-top: 0;
+}
+.champ-lore {
+    margin-top: 7px;
+    font-size: 0.9em;
+    text-align: justify;
+    max-height: 60px;
+    overflow: hidden;
+}
+.stat-label {
+    display: block;
+    padding-left: 30px;
+}
+.stat-value {
+    padding-left: 30px;
+}
+.stat-hp {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 -150px;
+}
+.stat-ad {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 0;
+}
+.stat-as {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 -50px;
+}
+.stat-ms {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 -75px;
+}
+.stat-hp-regen {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 -175px;
+}
+.stat-armor {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 -25px;
+}
+.stat-mr {
+    background: url(https://lolstatic-a.akamaihd.net/frontpage/apps/prod/LolGameInfo-Harbinger/en_US/8588e206d560a23f4d6dd0faab1663e13e84e21d/assets/assets/images/stat-icons-sprite.png) no-repeat 0 -125px;
+}
+.white-stone {
+    padding: 20px;
+    box-sizing: border-box;
+    background: #e9eaec;
+    color: #333132;
+    width: auto;
+    position: relative;
+}
+.champ-ability iframe{
+  display: block;
+}
+.champ-ability h3 {
+  margin: 10px 0;
+  font-size: 1.73em;
+    font-family: "Adobe Garamond Pro",Garamond,Baskerville,"Baskerville Old Face","Hoefler Text","Times New Roman",serif;
+}
+.champ-ability #ability-summary .default-1-5 {
+    float: left;
+    padding-left: 22px;
+}
+.champ-ability #ability-summary .default-1-5 .content-border{
+  margin-top: 0;
+}
+.champ-ability #ability-summary .default-1-5:first-child{
+  padding-left: 0;
+}
+.champ-ability #ability-summary .default-1-5 img{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.champ-ability #ability-summary .default-1-5 a {
+    display: block;
+}
+.btn-large-primary, .btn-large-primary:visited {
+    color: #222;
+    border-color: #f6c653 #bd6a23 #b6631f #e8ab4a;
+    background: #d79922 url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/lol-textures.jpg) no-repeat 50% -846px;
+}
+.btn-large, .btn-large:visited {
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 3px;
+    width: auto;
+    font-family: "Adobe Garamond Pro",Garamond,Baskerville,"Baskerville Old Face","Hoefler Text","Times New Roman",serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 6px 20px 4px 20px;
+    display: inline-block;
+    text-align: center;
+}
+.btn-large-primary:hover {
+    color: #222;
+    border-color: #fdeaba #bf712c #b66521 #edbd6e;
+    background-position: 50% -878px;
+}
+.champ-ability .btn-large {
+    margin-top: 10px;
+}
+@media(min-width: 1200px){
+  .container{
+    width: 980px;
+  }
+}
