@@ -18,6 +18,10 @@ h3 {
     margin: 10px 0 0 0;
     line-height: 1em;
 }
+.App {
+    padding: 30px 0;
+}
+.tooltip_templates{display: none;}
 #ChampionBackdrop {
     position: fixed;
     width: 100%;
@@ -30,7 +34,7 @@ h3 {
 }
 #champion-section {
     padding: 20px 0 50px 0;
-    margin-top: 30px;
+    margin-top: 350px;
     margin-bottom: 30px;
     position: relative;
     background-image: url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/frame-center.png);
@@ -185,6 +189,29 @@ h3 {
 }
 .champ-ability .btn-large {
     margin-top: 10px;
+}
+.tooltipster-sidetip .tooltipster-content{
+  max-width: 350px;
+}
+.tooltipster-sidetip .tooltipster-content .spell-name{
+  display: block;
+  text-decoration: underline;
+}
+.tooltipster-sidetip .tooltipster-content .spell-description {
+    margin-top: 4px;
+    display: block;
+    font-size: 0.95em;
+}
+.tooltipster-sidetip .tooltipster-box {
+    background: rgba(0,0,0,0.8);
+    border: 2px solid rgba(0,0,0,0.8);
+    border-radius: 4px;
+}
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-border {
+    border-top-color: rgba(0,0,0,0.8);
+}
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-background{
+  border-top-color: rgba(0,0,0,0.8);
 }
 @media(min-width: 1200px){
   .container{
